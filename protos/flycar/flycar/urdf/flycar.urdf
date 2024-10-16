@@ -1,0 +1,1624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="flycar">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0182124633794695 -0.279999999999859 0.0962073296263657"
+        rpy="0 0 0" />
+      <mass
+        value="0.650996744463774" />
+      <inertia
+        ixx="0.0147521285230154"
+        ixy="-1.98316660206466E-14"
+        ixz="1.64644284963636E-15"
+        iyy="0.0147521285230157"
+        iyz="1.28047444670551E-16"
+        izz="0.0294437767852134" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="shan1">
+    <inertial>
+      <origin
+        xyz="0.0130510061555961 0.00670922605388478 0.380734911996731"
+        rpy="0 0 0" />
+      <mass
+        value="0.091059098694857" />
+      <inertia
+        ixx="0.000254430172839092"
+        ixy="3.98832476084305E-12"
+        ixz="9.87669263163625E-06"
+        iyy="0.000472158411726339"
+        iyz="2.73585065381819E-11"
+        izz="0.00025785072195545" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/shan1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/shan1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="blade1up"
+    type="fixed">
+    <origin
+      xyz="-0.29643 -0.16443 0.12194"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="shan1" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="shan2">
+    <inertial>
+      <origin
+        xyz="0.0613233745309867 0.0363128625038329 -0.00299422071796496"
+        rpy="0 0 0" />
+      <mass
+        value="0.0910590982796897" />
+      <inertia
+        ixx="0.000262541844060338"
+        ixy="1.5070280984683E-11"
+        ixz="7.71337321262446E-06"
+        iyy="0.000472158406197901"
+        iyz="2.32021279961897E-11"
+        izz="0.000249739045209857" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/shan2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/shan2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="blade2up"
+    type="fixed">
+    <origin
+      xyz="0.22399 -0.60211 0.092336"
+      rpy="1.5708 0 1.1387" />
+    <parent
+      link="base_link" />
+    <child
+      link="shan2" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="shan3">
+    <inertial>
+      <origin
+        xyz="0.0130510059163607 0.00670922598726396 0.380734912242198"
+        rpy="0 0 0" />
+      <mass
+        value="0.0910590984874694" />
+      <inertia
+        ixx="0.000254430171318802"
+        ixy="3.97103585018592E-12"
+        ixz="9.87669084123789E-06"
+        iyy="0.00047215840811114"
+        iyz="2.73817318194871E-11"
+        izz="0.000257850719864821" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/shan3.STL" />
+      </geometry>
+      <material
+        name="fist">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/shan3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="blade3up"
+    type="fixed">
+    <origin
+      xyz="0.26 -0.39557 0.12194"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="shan3" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="sahn4">
+    <inertial>
+      <origin
+        xyz="0.013051006225007 -0.00670922590719912 -0.38073491195847"
+        rpy="0 0 0" />
+      <mass
+        value="0.0910590981925272" />
+      <inertia
+        ixx="0.000254430171057355"
+        ixy="-3.98509281177033E-12"
+        ixz="-9.87669055865808E-06"
+        iyy="0.000472158407519526"
+        iyz="2.73644666983244E-11"
+        izz="0.000257850719529874" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/sahn4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/sahn4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="blade4up"
+    type="fixed">
+    <origin
+      xyz="0.097357 -0.001784 0.12194"
+      rpy="-1.5708 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="sahn4" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="tou">
+    <inertial>
+      <origin
+        xyz="-0.134824310995846 0.115041097999054 -0.0750000000000001"
+        rpy="0 0 0" />
+      <mass
+        value="1.522713843331" />
+      <inertia
+        ixx="0.0149257458036302"
+        ixy="-0.000921583154264689"
+        ixz="3.90000326433926E-18"
+        iyy="0.0167821545637735"
+        iyz="1.17137314330476E-18"
+        izz="0.0184692661677145" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/tou.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/tou.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="head"
+    type="fixed">
+    <origin
+      xyz="0.094742 -0.355 -0.11666"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="tou" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="zuo">
+    <inertial>
+      <origin
+        xyz="0.0716717779429541 8.32667268468867E-17 0.0150000000000001"
+        rpy="0 0 0" />
+      <mass
+        value="0.254971008311362" />
+      <inertia
+        ixx="0.000143913945586389"
+        ixy="3.18484388167617E-19"
+        ixz="-3.24407258987913E-18"
+        iyy="0.00246825453258363"
+        iyz="-9.74764294418046E-20"
+        izz="0.00257290646446158" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/zuo.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/zuo.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left hip"
+    type="revolute">
+    <origin
+      xyz="-0.15637 0.068631 0.013"
+      rpy="0 0 -0.50761" />
+    <parent
+      link="tou" />
+    <child
+      link="zuo" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="zuoxia">
+    <inertial>
+      <origin
+        xyz="-0.194914767890928 1.17683640610267E-14 0.00999999999999973"
+        rpy="0 0 0" />
+      <mass
+        value="0.327867300642188" />
+      <inertia
+        ixx="0.000105165440495972"
+        ixy="5.83436294068762E-18"
+        ixz="-6.63804471836475E-18"
+        iyy="0.00495572549888622"
+        iyz="4.65228864046098E-20"
+        izz="0.00503903311933938" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/zuoxia.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/zuoxia.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left ankle"
+    type="revolute">
+    <origin
+      xyz="0.36022 0.059837 0.005"
+      rpy="0 0 0.92369" />
+    <parent
+      link="zuo" />
+    <child
+      link="zuoxia" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="lun1">
+    <inertial>
+      <origin
+        xyz="2.45636844198316E-14 4.40758540776187E-14 0.0150000000000002"
+        rpy="0 0 0" />
+      <mass
+        value="0.297523179657174" />
+      <inertia
+        ixx="0.000436067791446482"
+        ixy="-2.16840434497101E-19"
+        ixz="-1.57926199076428E-19"
+        iyy="0.000436067791446482"
+        iyz="2.71465102576709E-19"
+        izz="0.000830824034432122" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/lun1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/lun1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left wheel"
+    type="continuous">
+    <origin
+      xyz="-0.376 0 0.025"
+      rpy="0 0 -0.5493" />
+    <parent
+      link="zuoxia" />
+    <child
+      link="lun1" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="you">
+    <inertial>
+      <origin
+        xyz="0.0694143647456296 -0.137599241336888 -0.0149999999999999"
+        rpy="0 0 0" />
+      <mass
+        value="0.254971008311362" />
+      <inertia
+        ixx="0.000323097906280746"
+        ixy="-0.000619981984101711"
+        ixz="2.8974111371265E-18"
+        iyy="0.00228907057188927"
+        iyz="9.34453038612362E-19"
+        izz="0.00257290646446158" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/you.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/you.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right hip"
+    type="revolute">
+    <origin
+      xyz="-0.045 0.18 -0.163"
+      rpy="0 0 -0.78896" />
+    <parent
+      link="tou" />
+    <child
+      link="you" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="youxia">
+    <inertial>
+      <origin
+        xyz="-0.194914767890853 5.37903055430888E-14 0.0100000000000002"
+        rpy="0 0 0" />
+      <mass
+        value="0.327867300642188" />
+      <inertia
+        ixx="0.000105165440495971"
+        ixy="5.69544953733792E-18"
+        ixz="6.34972695660545E-18"
+        iyy="0.00495572549888621"
+        iyz="-2.82976999504252E-20"
+        izz="0.00503903311933937" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/youxia.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/youxia.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right ankle"
+    type="revolute">
+    <origin
+      xyz="0.33 0 -0.025"
+      rpy="0 0 1.205" />
+    <parent
+      link="you" />
+    <child
+      link="youxia" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="lun2">
+    <inertial>
+      <origin
+        xyz="7.63278329429795E-17 -1.11022302462516E-16 0.015"
+        rpy="0 0 0" />
+      <mass
+        value="0.297523179657174" />
+      <inertia
+        ixx="0.000436067791446482"
+        ixy="-2.47333620598256E-19"
+        ixz="1.42926984221252E-19"
+        iyy="0.000436067791446482"
+        iyz="-3.22439621145586E-19"
+        izz="0.000830824034432122" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/lun2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/lun2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right wheel"
+    type="continuous">
+    <origin
+      xyz="-0.376 0 -0.035"
+      rpy="0 0 -0.5493" />
+    <parent
+      link="youxia" />
+    <child
+      link="lun2" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="zuo11">
+    <inertial>
+      <origin
+        xyz="0.150289069798095 6.93889390390723E-17 0.0150000000000002"
+        rpy="0 0 0" />
+      <mass
+        value="0.225786466067855" />
+      <inertia
+        ixx="2.88599547146493E-05"
+        ixy="-8.8430239693349E-19"
+        ixz="-2.06336674063016E-18"
+        iyy="0.00190962909286552"
+        iyz="1.13866822034248E-20"
+        izz="0.00190276024097599" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/zuo11.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/zuo11.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left shoulder"
+    type="revolute">
+    <origin
+      xyz="-0.045 0.18 0.013"
+      rpy="0 0 -0.78896" />
+    <parent
+      link="tou" />
+    <child
+      link="zuo11" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="zuoxia11">
+    <inertial>
+      <origin
+        xyz="-0.194914767890928 1.17683640610267E-14 0.00999999999999973"
+        rpy="0 0 0" />
+      <mass
+        value="0.327867300642188" />
+      <inertia
+        ixx="0.000105165440495971"
+        ixy="5.45489218031769E-18"
+        ixz="-6.63804471836475E-18"
+        iyy="0.00495572549888622"
+        iyz="4.65228864046102E-20"
+        izz="0.00503903311933938" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/zuoxia11.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/zuoxia11.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left knee"
+    type="fixed">
+    <origin
+      xyz="0.33 0 0.005"
+      rpy="0 0 1.205" />
+    <parent
+      link="zuo11" />
+    <child
+      link="zuoxia11" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="zuolun1">
+    <inertial>
+      <origin
+        xyz="2.45636844198316E-14 4.40758540776187E-14 0.0150000000000002"
+        rpy="0 0 0" />
+      <mass
+        value="0.297523179657174" />
+      <inertia
+        ixx="0.000436067791446482"
+        ixy="-2.23616698075135E-19"
+        ixz="-1.57926199076428E-19"
+        iyy="0.000436067791446482"
+        iyz="2.71465102576709E-19"
+        izz="0.000830824034432122" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/zuolun1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/zuolun1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left wheel1"
+    type="fixed">
+    <origin
+      xyz="-0.376 0 0.025"
+      rpy="0 0 -0.5493" />
+    <parent
+      link="zuoxia11" />
+    <child
+      link="zuolun1" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="you11">
+    <inertial>
+      <origin
+        xyz="0.150289069798095 -1.11022302462516E-16 -0.015"
+        rpy="0 0 0" />
+      <mass
+        value="0.225786466067855" />
+      <inertia
+        ixx="2.88599547146491E-05"
+        ixy="-6.61532731805609E-19"
+        ixz="1.7903665450827E-18"
+        iyy="0.00190962909286551"
+        iyz="2.09060800354936E-20"
+        izz="0.00190276024097599" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/you11.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/you11.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right shoulder"
+    type="revolute">
+    <origin
+      xyz="-0.045 0.18 -0.163"
+      rpy="0 0 -0.78896" />
+    <parent
+      link="tou" />
+    <child
+      link="you11" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="youxia11">
+    <inertial>
+      <origin
+        xyz="-0.194914767890853 5.37903055430888E-14 0.0100000000000002"
+        rpy="0 0 0" />
+      <mass
+        value="0.327867300642188" />
+      <inertia
+        ixx="0.000105165440495972"
+        ixy="5.73610711880612E-18"
+        ixz="6.34972695660545E-18"
+        iyy="0.00495572549888621"
+        iyz="-2.82976999504264E-20"
+        izz="0.00503903311933937" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/youxia11.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/youxia11.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right knee"
+    type="fixed">
+    <origin
+      xyz="0.33 0 -0.025"
+      rpy="0 0 1.205" />
+    <parent
+      link="you11" />
+    <child
+      link="youxia11" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="youlun">
+    <inertial>
+      <origin
+        xyz="7.63278329429795E-17 -1.11022302462516E-16 0.015"
+        rpy="0 0 0" />
+      <mass
+        value="0.297523179657173" />
+      <inertia
+        ixx="0.000436067791446482"
+        ixy="-2.03287907341032E-19"
+        ixz="1.42926984221252E-19"
+        iyy="0.000436067791446482"
+        iyz="-3.22439621145586E-19"
+        izz="0.000830824034432121" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/youlun.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/youlun.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right wheel1"
+    type="fixed">
+    <origin
+      xyz="-0.376 0 -0.035"
+      rpy="0 0 -0.5493" />
+    <parent
+      link="youxia11" />
+    <child
+      link="youlun" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="dianshua1">
+    <inertial>
+      <origin
+        xyz="-0.000364749901856032 -0.0299936137523494 2.77555756156289E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0614798977632467" />
+      <inertia
+        ixx="9.44146483925111E-06"
+        ixy="-1.35207664940059E-07"
+        ixz="1.05860758050852E-20"
+        iyy="4.13720218048329E-05"
+        iyz="-1.7442308248811E-21"
+        izz="3.60492613594554E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/dianshua1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/dianshua1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right brush1"
+    type="fixed">
+    <origin
+      xyz="-0.16883 -0.44476 0.097336"
+      rpy="0 0 -2.3562" />
+    <parent
+      link="base_link" />
+    <child
+      link="dianshua1" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="dianshua2">
+    <inertial>
+      <origin
+        xyz="-0.000364749901856518 0.0099936137519919 -1.38777878078145E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0614798977632467" />
+      <inertia
+        ixx="9.44146483925109E-06"
+        ixy="1.35207664939107E-07"
+        ixz="-1.56386095012854E-20"
+        iyy="4.13720218048329E-05"
+        iyz="-5.5653418857482E-22"
+        izz="3.60492613594554E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/dianshua2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/dianshua2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right brush3"
+    type="fixed">
+    <origin
+      xyz="0.1324 -0.11524 0.097336"
+      rpy="0 0 0.7854" />
+    <parent
+      link="base_link" />
+    <child
+      link="dianshua2" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="dianshua3">
+    <inertial>
+      <origin
+        xyz="-0.000364749901856476 0.00999361375199193 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0614798977632466" />
+      <inertia
+        ixx="9.44146483925108E-06"
+        ixy="1.35207664939119E-07"
+        ixz="-1.43634309445639E-20"
+        iyy="4.13720218048328E-05"
+        iyz="2.03157250737889E-22"
+        izz="3.60492613594554E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/dianshua3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/dianshua3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left brush2"
+    type="fixed">
+    <origin
+      xyz="0.14654 -0.43061 0.097336"
+      rpy="0 0 -0.7854" />
+    <parent
+      link="base_link" />
+    <child
+      link="dianshua3" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="dianshua4">
+    <inertial>
+      <origin
+        xyz="-0.00036474990185649 0.00999361375199187 1.38777878078145E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0614798977632467" />
+      <inertia
+        ixx="9.44146483925109E-06"
+        ixy="1.35207664939109E-07"
+        ixz="-9.5838925565504E-21"
+        iyy="4.13720218048329E-05"
+        iyz="-2.33746620306624E-21"
+        izz="3.60492613594555E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/dianshua4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/dianshua4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right brush4"
+    type="fixed">
+    <origin
+      xyz="-0.16883 -0.11524 0.097336"
+      rpy="-3.1416 0 2.3562" />
+    <parent
+      link="base_link" />
+    <child
+      link="dianshua4" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="shan11">
+    <inertial>
+      <origin
+        xyz="0.0613233475250202 -0.0261970222714186 -0.00299409683345653"
+        rpy="0 0 0" />
+      <mass
+        value="0.0910591352179713" />
+      <inertia
+        ixx="0.000266154922321934"
+        ixy="-2.54206514296999E-11"
+        ixz="4.2910608930087E-07"
+        iyy="0.000472158378253302"
+        iyz="1.88508064647387E-11"
+        izz="0.000246125940186041" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/shan11.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/shan11.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="blade1down"
+    type="fixed">
+    <origin
+      xyz="-0.34032 -0.5222 0.092336"
+      rpy="1.5708 0 -0.43209" />
+    <parent
+      link="base_link" />
+    <child
+      link="shan11" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="shan21">
+    <inertial>
+      <origin
+        xyz="0.0613233475229382 -0.0261970223049054 -0.00299409708940868"
+        rpy="0 0 0" />
+      <mass
+        value="0.0910591353189298" />
+      <inertia
+        ixx="0.000266154922840643"
+        ixy="-2.54226529519989E-11"
+        ixz="4.29106049900712E-07"
+        iyy="0.000472158378770247"
+        iyz="1.8840195976304E-11"
+        izz="0.000246125940186041" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/shan21.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/shan21.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="blade2down"
+    type="fixed">
+    <origin
+      xyz="0.22399 -0.60211 0.092336"
+      rpy="1.5708 0 1.1387" />
+    <parent
+      link="base_link" />
+    <child
+      link="shan21" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="shan31">
+    <inertial>
+      <origin
+        xyz="0.0613233476776904 -0.0261970212974139 -0.00299409708083249"
+        rpy="0 0 0" />
+      <mass
+        value="0.0910591319362049" />
+      <inertia
+        ixx="0.000266154922544256"
+        ixy="-2.53731567014985E-11"
+        ixz="4.29106104132606E-07"
+        iyy="0.000472158378358499"
+        iyz="1.88582697486392E-11"
+        izz="0.000246125940032365" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/shan31.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/shan31.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="blade3down"
+    type="fixed">
+    <origin
+      xyz="0.30389 -0.037796 0.092336"
+      rpy="1.5708 0 2.7095" />
+    <parent
+      link="base_link" />
+    <child
+      link="shan31" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="shan41">
+    <inertial>
+      <origin
+        xyz="0.0613233476839502 -0.026197026216585 -0.00299409685042029"
+        rpy="0 0 0" />
+      <mass
+        value="0.0910591491197046" />
+      <inertia
+        ixx="0.000266155085211546"
+        ixy="-2.53716736067286E-11"
+        ixz="4.29106640761433E-07"
+        iyy="0.000472158541059013"
+        iyz="1.88731595805593E-11"
+        izz="0.000246125940070192" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/shan41.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/shan41.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="blade4down"
+    type="fixed">
+    <origin
+      xyz="-0.26042 0.042106 0.092336"
+      rpy="1.5708 0 -2.0029" />
+    <parent
+      link="base_link" />
+    <child
+      link="shan41" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="dianshau11">
+    <inertial>
+      <origin
+        xyz="-0.000364749901856476 0.00999361375199187 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0614798977632466" />
+      <inertia
+        ixx="9.44146483925109E-06"
+        ixy="1.35207664939107E-07"
+        ixz="-1.94317751389853E-20"
+        iyy="4.13720218048329E-05"
+        iyz="-4.54038493762194E-21"
+        izz="3.60492613594554E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/dianshau11.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/dianshau11.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left brush1"
+    type="fixed">
+    <origin
+      xyz="-0.16883 -0.44476 0.097336"
+      rpy="0 0 -2.3562" />
+    <parent
+      link="base_link" />
+    <child
+      link="dianshau11" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="dianshua21">
+    <inertial>
+      <origin
+        xyz="-0.000364749901856504 0.00999361375199187 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0614798977632467" />
+      <inertia
+        ixx="9.44146483925108E-06"
+        ixy="1.35207664939087E-07"
+        ixz="-1.07976452130115E-20"
+        iyy="4.13720218048329E-05"
+        iyz="1.40078893319743E-21"
+        izz="3.60492613594554E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/dianshua21.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/dianshua21.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left brush3"
+    type="fixed">
+    <origin
+      xyz="0.14654 -0.12939 0.097336"
+      rpy="3.1416 0 0.7854" />
+    <parent
+      link="base_link" />
+    <child
+      link="dianshua21" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="dianshua31">
+    <inertial>
+      <origin
+        xyz="-0.000364749901856531 0.00999361375199184 1.38777878078145E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0614798977632467" />
+      <inertia
+        ixx="9.4414648392511E-06"
+        ixy="1.35207664939104E-07"
+        ixz="-1.2569773469508E-20"
+        iyy="4.13720218048329E-05"
+        iyz="7.70105340968606E-23"
+        izz="3.60492613594555E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/dianshua31.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/dianshua31.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right brush2"
+    type="fixed">
+    <origin
+      xyz="0.1324 -0.44476 0.097336"
+      rpy="3.1416 0 -0.7854" />
+    <parent
+      link="base_link" />
+    <child
+      link="dianshua31" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="dianshua41">
+    <inertial>
+      <origin
+        xyz="-0.00036474990185649 0.00999361375199181 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0614798977632466" />
+      <inertia
+        ixx="9.44146483925108E-06"
+        ixy="1.35207664939094E-07"
+        ixz="-1.14324802999E-20"
+        iyy="4.13720218048329E-05"
+        iyz="-8.80416840822301E-22"
+        izz="3.60492613594554E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/dianshua41.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flycar/meshes/dianshua41.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left brush4"
+    type="fixed">
+    <origin
+      xyz="-0.18297 -0.12939 0.097336"
+      rpy="0 0 2.3562" />
+    <parent
+      link="base_link" />
+    <child
+      link="dianshua41" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

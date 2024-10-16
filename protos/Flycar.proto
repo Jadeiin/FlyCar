@@ -1,0 +1,942 @@
+#VRML_SIM R2023b utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# This is a proto file for Webots for the Flycar
+# Extracted from: ./flycar/flycar/urdf/flycar.urdf
+
+PROTO Flycar [
+  field  SFVec3f     translation     0 0 0
+  field  SFRotation  rotation        0 0 1 0
+  field  SFString    name            "Flycar"  # Is `Robot.name`.
+  field  SFString    controller      "void"    # Is `Robot.controller`.
+  field  MFString    controllerArgs  []        # Is `Robot.controllerArgs`.
+  field  SFString    customData      ""        # Is `Robot.customData`.
+  field  SFBool      supervisor      FALSE     # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE      # Is `Robot.synchronization`.
+  field  SFBool      selfCollision   FALSE     # Is `Robot.selfCollision`.
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    controller IS controller
+    controllerArgs IS controllerArgs
+    customData IS customData
+    supervisor IS supervisor
+    synchronization IS synchronization
+    selfCollision IS selfCollision
+    children [
+      Shape {
+        appearance DEF base_link_material PBRAppearance {
+          roughness 1.000000
+          metalness 0
+        }
+        geometry DEF base_link Mesh {
+          url "./flycar/flycar/meshes/base_link.STL"
+        }
+      }
+      Solid {
+        translation -0.296430 -0.164430 0.121940
+        rotation 1.000000 0.000000 0.000000 1.570800
+        children [
+          Shape {
+            appearance DEF shan1_material PBRAppearance {
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF shan1 Mesh {
+              url "./flycar/flycar/meshes/shan1.STL"
+            }
+          }
+        ]
+        name "shan1"
+        boundingObject USE shan1
+        physics Physics {
+          density -1
+          mass 0.091059
+          centerOfMass [ 0.013051 0.006709 0.380735 ]
+          inertiaMatrix [
+            2.544302e-04 4.721584e-04 2.578507e-04
+            3.988325e-12 9.876693e-06 2.735851e-11
+          ]
+        }
+      }
+      Solid {
+        translation 0.223990 -0.602110 0.092336
+        rotation 0.741386 0.474525 0.474524 1.865666
+        children [
+          Shape {
+            appearance DEF shan2_material PBRAppearance {
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF shan2 Mesh {
+              url "./flycar/flycar/meshes/shan2.STL"
+            }
+          }
+        ]
+        name "shan2"
+        boundingObject USE shan2
+        physics Physics {
+          density -1
+          mass 0.091059
+          centerOfMass [ 0.061323 0.036313 -0.002994 ]
+          inertiaMatrix [
+            2.625418e-04 4.721584e-04 2.497390e-04
+            1.507028e-11 7.713373e-06 2.320213e-11
+          ]
+        }
+      }
+      Solid {
+        translation 0.260000 -0.395570 0.121940
+        rotation -0.000003 0.707108 0.707105 3.141598
+        children [
+          Shape {
+            appearance DEF fist PBRAppearance {
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF shan3 Mesh {
+              url "./flycar/flycar/meshes/shan3.STL"
+            }
+          }
+        ]
+        name "shan3"
+        boundingObject USE shan3
+        physics Physics {
+          density -1
+          mass 0.091059
+          centerOfMass [ 0.013051 0.006709 0.380735 ]
+          inertiaMatrix [
+            2.544302e-04 4.721584e-04 2.578507e-04
+            3.971036e-12 9.876691e-06 2.738173e-11
+          ]
+        }
+      }
+      Solid {
+        translation 0.097357 -0.001784 0.121940
+        rotation -0.577350 0.577352 -0.577350 2.094399
+        children [
+          Shape {
+            appearance DEF sahn4_material PBRAppearance {
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF sahn4 Mesh {
+              url "./flycar/flycar/meshes/sahn4.STL"
+            }
+          }
+        ]
+        name "sahn4"
+        boundingObject USE sahn4
+        physics Physics {
+          density -1
+          mass 0.091059
+          centerOfMass [ 0.013051 -0.006709 -0.380735 ]
+          inertiaMatrix [
+            2.544302e-04 4.721584e-04 2.578507e-04
+            -3.985093e-12 -9.876691e-06 2.736447e-11
+          ]
+        }
+      }
+      Solid {
+        translation 0.094742 -0.355000 -0.116660
+        rotation 1.000000 0.000000 0.000000 1.570800
+        children [
+          Shape {
+            appearance DEF tou_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF tou Mesh {
+              url "./flycar/flycar/meshes/tou.STL"
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0.000000 0.000000 1.000000
+              anchor -0.156370 0.068631 0.013000
+            }
+            device [
+              RotationalMotor {
+                name "left hip"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "left hip_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation -0.156370 0.068631 0.013000
+              rotation 0.000000 0.000000 -1.000000 0.507610
+              children [
+                Shape {
+                  appearance DEF zuo_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1.000000
+                    metalness 0
+                  }
+                  geometry DEF zuo Mesh {
+                    url "./flycar/flycar/meshes/zuo.STL"
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0.000000 0.000000 1.000000
+                    anchor 0.360220 0.059837 0.005000
+                  }
+                  device [
+                    RotationalMotor {
+                      name "left ankle"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "left ankle_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0.360220 0.059837 0.005000
+                    rotation 0.000000 0.000000 1.000000 0.923690
+                    children [
+                      Shape {
+                        appearance DEF zuoxia_material PBRAppearance {
+                          baseColor 0.792157 0.819608 0.933333
+                          roughness 1.000000
+                          metalness 0
+                        }
+                        geometry DEF zuoxia Mesh {
+                          url "./flycar/flycar/meshes/zuoxia.STL"
+                        }
+                      }
+                      HingeJoint {
+                        jointParameters HingeJointParameters {
+                          axis 0.000000 0.000000 1.000000
+                          anchor -0.376000 0.000000 0.025000
+                        }
+                        device [
+                          RotationalMotor {
+                            name "left wheel"
+                            maxTorque 10000
+                          }
+                          PositionSensor {
+                            name "left wheel_sensor"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation -0.376000 0.000000 0.025000
+                          rotation 0.000000 0.000000 -1.000000 0.549300
+                          children [
+                            Shape {
+                              appearance DEF lun1_material PBRAppearance {
+                                baseColor 0.792157 0.819608 0.933333
+                                roughness 1.000000
+                                metalness 0
+                              }
+                              geometry DEF lun1 Mesh {
+                                url "./flycar/flycar/meshes/lun1.STL"
+                              }
+                            }
+                          ]
+                          name "lun1"
+                          boundingObject USE lun1
+                          physics Physics {
+                            density -1
+                            mass 0.297523
+                            centerOfMass [ 0.000000 0.000000 0.015000 ]
+                            inertiaMatrix [
+                              4.360678e-04 4.360678e-04 8.308240e-04
+                              -2.168404e-19 -1.579262e-19 2.714651e-19
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                    name "zuoxia"
+                    boundingObject USE zuoxia
+                    physics Physics {
+                      density -1
+                      mass 0.327867
+                      centerOfMass [ -0.194915 0.000000 0.010000 ]
+                      inertiaMatrix [
+                        1.051654e-04 4.955725e-03 5.039033e-03
+                        5.834363e-18 -6.638045e-18 4.652289e-20
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "zuo"
+              boundingObject USE zuo
+              physics Physics {
+                density -1
+                mass 0.254971
+                centerOfMass [ 0.071672 0.000000 0.015000 ]
+                inertiaMatrix [
+                  1.439139e-04 2.468255e-03 2.572906e-03
+                  3.184844e-19 -3.244073e-18 -9.747643e-20
+                ]
+              }
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0.000000 0.000000 1.000000
+              anchor -0.045000 0.180000 -0.163000
+            }
+            device [
+              RotationalMotor {
+                name "right hip"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "right hip_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation -0.045000 0.180000 -0.163000
+              rotation 0.000000 0.000000 -1.000000 0.788960
+              children [
+                Shape {
+                  appearance DEF you_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1.000000
+                    metalness 0
+                  }
+                  geometry DEF you Mesh {
+                    url "./flycar/flycar/meshes/you.STL"
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0.000000 0.000000 1.000000
+                    anchor 0.330000 0.000000 -0.025000
+                  }
+                  device [
+                    RotationalMotor {
+                      name "right ankle"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "right ankle_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0.330000 0.000000 -0.025000
+                    rotation 0.000000 0.000000 1.000000 1.205000
+                    children [
+                      Shape {
+                        appearance DEF youxia_material PBRAppearance {
+                          baseColor 0.792157 0.819608 0.933333
+                          roughness 1.000000
+                          metalness 0
+                        }
+                        geometry DEF youxia Mesh {
+                          url "./flycar/flycar/meshes/youxia.STL"
+                        }
+                      }
+                      HingeJoint {
+                        jointParameters HingeJointParameters {
+                          axis 0.000000 0.000000 1.000000
+                          anchor -0.376000 0.000000 -0.035000
+                        }
+                        device [
+                          RotationalMotor {
+                            name "right wheel"
+                            maxTorque 10000
+                          }
+                          PositionSensor {
+                            name "right wheel_sensor"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation -0.376000 0.000000 -0.035000
+                          rotation 0.000000 0.000000 -1.000000 0.549300
+                          children [
+                            Shape {
+                              appearance DEF lun2_material PBRAppearance {
+                                baseColor 0.792157 0.819608 0.933333
+                                roughness 1.000000
+                                metalness 0
+                              }
+                              geometry DEF lun2 Mesh {
+                                url "./flycar/flycar/meshes/lun2.STL"
+                              }
+                            }
+                          ]
+                          name "lun2"
+                          boundingObject USE lun2
+                          physics Physics {
+                            density -1
+                            mass 0.297523
+                            centerOfMass [ 0.000000 -0.000000 0.015000 ]
+                            inertiaMatrix [
+                              4.360678e-04 4.360678e-04 8.308240e-04
+                              -2.473336e-19 1.429270e-19 -3.224396e-19
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                    name "youxia"
+                    boundingObject USE youxia
+                    physics Physics {
+                      density -1
+                      mass 0.327867
+                      centerOfMass [ -0.194915 0.000000 0.010000 ]
+                      inertiaMatrix [
+                        1.051654e-04 4.955725e-03 5.039033e-03
+                        5.695450e-18 6.349727e-18 -2.829770e-20
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "you"
+              boundingObject USE you
+              physics Physics {
+                density -1
+                mass 0.254971
+                centerOfMass [ 0.069414 -0.137599 -0.015000 ]
+                inertiaMatrix [
+                  3.230979e-04 2.289071e-03 2.572906e-03
+                  -6.199820e-04 2.897411e-18 9.344530e-19
+                ]
+              }
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0.000000 0.000000 1.000000
+              anchor -0.045000 0.180000 0.013000
+            }
+            device [
+              RotationalMotor {
+                name "left shoulder"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "left shoulder_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation -0.045000 0.180000 0.013000
+              rotation 0.000000 0.000000 -1.000000 0.788960
+              children [
+                Shape {
+                  appearance DEF zuo11_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1.000000
+                    metalness 0
+                  }
+                  geometry DEF zuo11 Mesh {
+                    url "./flycar/flycar/meshes/zuo11.STL"
+                  }
+                }
+                Solid {
+                  translation 0.330000 0.000000 0.005000
+                  rotation 0.000000 0.000000 1.000000 1.205000
+                  children [
+                    Shape {
+                      appearance DEF zuoxia11_material PBRAppearance {
+                        baseColor 0.792157 0.819608 0.933333
+                        roughness 1.000000
+                        metalness 0
+                      }
+                      geometry DEF zuoxia11 Mesh {
+                        url "./flycar/flycar/meshes/zuoxia11.STL"
+                      }
+                    }
+                    Solid {
+                      translation -0.376000 0.000000 0.025000
+                      rotation 0.000000 0.000000 -1.000000 0.549300
+                      children [
+                        Shape {
+                          appearance DEF zuolun1_material PBRAppearance {
+                            baseColor 0.792157 0.819608 0.933333
+                            roughness 1.000000
+                            metalness 0
+                          }
+                          geometry DEF zuolun1 Mesh {
+                            url "./flycar/flycar/meshes/zuolun1.STL"
+                          }
+                        }
+                      ]
+                      name "zuolun1"
+                      boundingObject USE zuolun1
+                      physics Physics {
+                        density -1
+                        mass 0.297523
+                        centerOfMass [ 0.000000 0.000000 0.015000 ]
+                        inertiaMatrix [
+                          4.360678e-04 4.360678e-04 8.308240e-04
+                          -2.236167e-19 -1.579262e-19 2.714651e-19
+                        ]
+                      }
+                    }
+                  ]
+                  name "zuoxia11"
+                  boundingObject USE zuoxia11
+                  physics Physics {
+                    density -1
+                    mass 0.327867
+                    centerOfMass [ -0.194915 0.000000 0.010000 ]
+                    inertiaMatrix [
+                      1.051654e-04 4.955725e-03 5.039033e-03
+                      5.454892e-18 -6.638045e-18 4.652289e-20
+                    ]
+                  }
+                }
+              ]
+              name "zuo11"
+              boundingObject USE zuo11
+              physics Physics {
+                density -1
+                mass 0.225786
+                centerOfMass [ 0.150289 0.000000 0.015000 ]
+                inertiaMatrix [
+                  2.885995e-05 1.909629e-03 1.902760e-03
+                  -8.843024e-19 -2.063367e-18 1.138668e-20
+                ]
+              }
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0.000000 0.000000 1.000000
+              anchor -0.045000 0.180000 -0.163000
+            }
+            device [
+              RotationalMotor {
+                name "right shoulder"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "right shoulder_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation -0.045000 0.180000 -0.163000
+              rotation 0.000000 0.000000 -1.000000 0.788960
+              children [
+                Shape {
+                  appearance DEF you11_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1.000000
+                    metalness 0
+                  }
+                  geometry DEF you11 Mesh {
+                    url "./flycar/flycar/meshes/you11.STL"
+                  }
+                }
+                Solid {
+                  translation 0.330000 0.000000 -0.025000
+                  rotation 0.000000 0.000000 1.000000 1.205000
+                  children [
+                    Shape {
+                      appearance DEF youxia11_material PBRAppearance {
+                        baseColor 0.792157 0.819608 0.933333
+                        roughness 1.000000
+                        metalness 0
+                      }
+                      geometry DEF youxia11 Mesh {
+                        url "./flycar/flycar/meshes/youxia11.STL"
+                      }
+                    }
+                    Solid {
+                      translation -0.376000 0.000000 -0.035000
+                      rotation 0.000000 0.000000 -1.000000 0.549300
+                      children [
+                        Shape {
+                          appearance DEF youlun_material PBRAppearance {
+                            baseColor 0.792157 0.819608 0.933333
+                            roughness 1.000000
+                            metalness 0
+                          }
+                          geometry DEF youlun Mesh {
+                            url "./flycar/flycar/meshes/youlun.STL"
+                          }
+                        }
+                      ]
+                      name "youlun"
+                      boundingObject USE youlun
+                      physics Physics {
+                        density -1
+                        mass 0.297523
+                        centerOfMass [ 0.000000 -0.000000 0.015000 ]
+                        inertiaMatrix [
+                          4.360678e-04 4.360678e-04 8.308240e-04
+                          -2.032879e-19 1.429270e-19 -3.224396e-19
+                        ]
+                      }
+                    }
+                  ]
+                  name "youxia11"
+                  boundingObject USE youxia11
+                  physics Physics {
+                    density -1
+                    mass 0.327867
+                    centerOfMass [ -0.194915 0.000000 0.010000 ]
+                    inertiaMatrix [
+                      1.051654e-04 4.955725e-03 5.039033e-03
+                      5.736107e-18 6.349727e-18 -2.829770e-20
+                    ]
+                  }
+                }
+              ]
+              name "you11"
+              boundingObject USE you11
+              physics Physics {
+                density -1
+                mass 0.225786
+                centerOfMass [ 0.150289 -0.000000 -0.015000 ]
+                inertiaMatrix [
+                  2.885995e-05 1.909629e-03 1.902760e-03
+                  -6.615327e-19 1.790367e-18 2.090608e-20
+                ]
+              }
+            }
+          }
+        ]
+        name "tou"
+        boundingObject USE tou
+        physics Physics {
+          density -1
+          mass 1.522714
+          centerOfMass [ -0.134824 0.115041 -0.075000 ]
+          inertiaMatrix [
+            1.492575e-02 1.678215e-02 1.846927e-02
+            -9.215832e-04 3.900003e-18 1.171373e-18
+          ]
+        }
+      }
+      Solid {
+        translation -0.168830 -0.444760 0.097336
+        rotation 0.000000 0.000000 -1.000000 2.356200
+        children [
+          Shape {
+            appearance DEF dianshua1_material PBRAppearance {
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF dianshua1 Mesh {
+              url "./flycar/flycar/meshes/dianshua1.STL"
+            }
+          }
+        ]
+        name "dianshua1"
+        boundingObject USE dianshua1
+        physics Physics {
+          density -1
+          mass 0.061480
+          centerOfMass [ -0.000365 -0.029994 0.000000 ]
+          inertiaMatrix [
+            9.441465e-06 4.137202e-05 3.604926e-05
+            -1.352077e-07 1.058608e-20 -1.744231e-21
+          ]
+        }
+      }
+      Solid {
+        translation 0.132400 -0.115240 0.097336
+        rotation 0.000000 0.000000 1.000000 0.785400
+        children [
+          Shape {
+            appearance DEF dianshua2_material PBRAppearance {
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF dianshua2 Mesh {
+              url "./flycar/flycar/meshes/dianshua2.STL"
+            }
+          }
+        ]
+        name "dianshua2"
+        boundingObject USE dianshua2
+        physics Physics {
+          density -1
+          mass 0.061480
+          centerOfMass [ -0.000365 0.009994 -0.000000 ]
+          inertiaMatrix [
+            9.441465e-06 4.137202e-05 3.604926e-05
+            1.352077e-07 -1.563861e-20 -5.565342e-22
+          ]
+        }
+      }
+      Solid {
+        translation 0.146540 -0.430610 0.097336
+        rotation 0.000000 0.000000 -1.000000 0.785400
+        children [
+          Shape {
+            appearance DEF dianshua3_material PBRAppearance {
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF dianshua3 Mesh {
+              url "./flycar/flycar/meshes/dianshua3.STL"
+            }
+          }
+        ]
+        name "dianshua3"
+        boundingObject USE dianshua3
+        physics Physics {
+          density -1
+          mass 0.061480
+          centerOfMass [ -0.000365 0.009994 0.000000 ]
+          inertiaMatrix [
+            9.441465e-06 4.137202e-05 3.604926e-05
+            1.352077e-07 -1.436343e-20 2.031573e-22
+          ]
+        }
+      }
+      Solid {
+        translation -0.168830 -0.115240 0.097336
+        rotation -0.382681 -0.923881 -0.000003 3.141595
+        children [
+          Shape {
+            appearance DEF dianshua4_material PBRAppearance {
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF dianshua4 Mesh {
+              url "./flycar/flycar/meshes/dianshua4.STL"
+            }
+          }
+        ]
+        name "dianshua4"
+        boundingObject USE dianshua4
+        physics Physics {
+          density -1
+          mass 0.061480
+          centerOfMass [ -0.000365 0.009994 0.000000 ]
+          inertiaMatrix [
+            9.441465e-06 4.137202e-05 3.604926e-05
+            1.352077e-07 -9.583893e-21 -2.337466e-21
+          ]
+        }
+      }
+      Solid {
+        translation -0.340320 -0.522200 0.092336
+        rotation 0.955055 -0.209606 -0.209606 1.616770
+        children [
+          Shape {
+            appearance DEF shan11_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF shan11 Mesh {
+              url "./flycar/flycar/meshes/shan11.STL"
+            }
+          }
+        ]
+        name "shan11"
+        boundingObject USE shan11
+        physics Physics {
+          density -1
+          mass 0.091059
+          centerOfMass [ 0.061323 -0.026197 -0.002994 ]
+          inertiaMatrix [
+            2.661549e-04 4.721584e-04 2.461259e-04
+            -2.542065e-11 4.291061e-07 1.885081e-11
+          ]
+        }
+      }
+      Solid {
+        translation 0.223990 -0.602110 0.092336
+        rotation 0.741386 0.474525 0.474524 1.865666
+        children [
+          Shape {
+            appearance DEF shan21_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF shan21 Mesh {
+              url "./flycar/flycar/meshes/shan21.STL"
+            }
+          }
+        ]
+        name "shan21"
+        boundingObject USE shan21
+        physics Physics {
+          density -1
+          mass 0.091059
+          centerOfMass [ 0.061323 -0.026197 -0.002994 ]
+          inertiaMatrix [
+            2.661549e-04 4.721584e-04 2.461259e-04
+            -2.542265e-11 4.291060e-07 1.884020e-11
+          ]
+        }
+      }
+      Solid {
+        translation 0.303890 -0.037796 0.092336
+        rotation 0.153354 0.698744 0.698741 2.837256
+        children [
+          Shape {
+            appearance DEF shan31_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF shan31 Mesh {
+              url "./flycar/flycar/meshes/shan31.STL"
+            }
+          }
+        ]
+        name "shan31"
+        boundingObject USE shan31
+        physics Physics {
+          density -1
+          mass 0.091059
+          centerOfMass [ 0.061323 -0.026197 -0.002994 ]
+          inertiaMatrix [
+            2.661549e-04 4.721584e-04 2.461259e-04
+            -2.537316e-11 4.291061e-07 1.885827e-11
+          ]
+        }
+      }
+      Solid {
+        translation -0.260420 0.042106 0.092336
+        rotation 0.412320 -0.644203 -0.644201 2.359432
+        children [
+          Shape {
+            appearance DEF shan41_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF shan41 Mesh {
+              url "./flycar/flycar/meshes/shan41.STL"
+            }
+          }
+        ]
+        name "shan41"
+        boundingObject USE shan41
+        physics Physics {
+          density -1
+          mass 0.091059
+          centerOfMass [ 0.061323 -0.026197 -0.002994 ]
+          inertiaMatrix [
+            2.661551e-04 4.721585e-04 2.461259e-04
+            -2.537167e-11 4.291066e-07 1.887316e-11
+          ]
+        }
+      }
+      Solid {
+        translation -0.168830 -0.444760 0.097336
+        rotation 0.000000 0.000000 -1.000000 2.356200
+        children [
+          Shape {
+            appearance DEF dianshau11_material PBRAppearance {
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF dianshau11 Mesh {
+              url "./flycar/flycar/meshes/dianshau11.STL"
+            }
+          }
+        ]
+        name "dianshau11"
+        boundingObject USE dianshau11
+        physics Physics {
+          density -1
+          mass 0.061480
+          centerOfMass [ -0.000365 0.009994 0.000000 ]
+          inertiaMatrix [
+            9.441465e-06 4.137202e-05 3.604926e-05
+            1.352077e-07 -1.943178e-20 -4.540385e-21
+          ]
+        }
+      }
+      Solid {
+        translation 0.146540 -0.129390 0.097336
+        rotation 0.923879 0.382684 -0.000001 3.141599
+        children [
+          Shape {
+            appearance DEF dianshua21_material PBRAppearance {
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF dianshua21 Mesh {
+              url "./flycar/flycar/meshes/dianshua21.STL"
+            }
+          }
+        ]
+        name "dianshua21"
+        boundingObject USE dianshua21
+        physics Physics {
+          density -1
+          mass 0.061480
+          centerOfMass [ -0.000365 0.009994 0.000000 ]
+          inertiaMatrix [
+            9.441465e-06 4.137202e-05 3.604926e-05
+            1.352077e-07 -1.079765e-20 1.400789e-21
+          ]
+        }
+      }
+      Solid {
+        translation 0.132400 -0.444760 0.097336
+        rotation 0.923879 -0.382684 0.000001 3.141599
+        children [
+          Shape {
+            appearance DEF dianshua31_material PBRAppearance {
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF dianshua31 Mesh {
+              url "./flycar/flycar/meshes/dianshua31.STL"
+            }
+          }
+        ]
+        name "dianshua31"
+        boundingObject USE dianshua31
+        physics Physics {
+          density -1
+          mass 0.061480
+          centerOfMass [ -0.000365 0.009994 0.000000 ]
+          inertiaMatrix [
+            9.441465e-06 4.137202e-05 3.604926e-05
+            1.352077e-07 -1.256977e-20 7.701053e-23
+          ]
+        }
+      }
+      Solid {
+        translation -0.182970 -0.129390 0.097336
+        rotation 0.000000 0.000000 1.000000 2.356200
+        children [
+          Shape {
+            appearance DEF dianshua41_material PBRAppearance {
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF dianshua41 Mesh {
+              url "./flycar/flycar/meshes/dianshua41.STL"
+            }
+          }
+        ]
+        name "dianshua41"
+        boundingObject USE dianshua41
+        physics Physics {
+          density -1
+          mass 0.061480
+          centerOfMass [ -0.000365 0.009994 0.000000 ]
+          inertiaMatrix [
+            9.441465e-06 4.137202e-05 3.604926e-05
+            1.352077e-07 -1.143248e-20 -8.804168e-22
+          ]
+        }
+      }
+    ]
+    name IS name
+    boundingObject USE base_link
+    physics Physics {
+      density -1
+      mass 0.650997
+      centerOfMass [ -0.018212 -0.280000 0.096207 ]
+      inertiaMatrix [
+        1.475213e-02 1.475213e-02 2.944378e-02
+        -1.983167e-14 1.646443e-15 1.280474e-16
+      ]
+    }
+  }
+}
