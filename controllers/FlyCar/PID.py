@@ -37,7 +37,7 @@ class PIDController:
         """
         # Calculate time elapsed since last call
         timestamp_now = cur_time
-        Ts = (timestamp_now - self.timestamp_prev) * 1e-6
+        Ts = (timestamp_now - self.timestamp_prev)  # Time difference in seconds
         # Handle micros overflow or invalid time intervals
         if Ts <= 0 or Ts > 0.5:
             Ts = 1e-3

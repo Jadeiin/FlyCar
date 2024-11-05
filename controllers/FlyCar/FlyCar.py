@@ -4,24 +4,60 @@ from LPF import LowPassFilter
 from PID import PIDController
 from controller import Robot
 
+global current_time
+
+
+def constrain(value, min_value, max_value):
+    return max(min(value, max_value), min_value)
+
+
+# 用于存储变量的数组
+time_data = []
+pitch_data = []
+velocity_data = []
+balance_torque_data = []
+turn_torque_data = []
+walk_torque_data = []
+
+
+def collect_data():
+    # 将每次迭代的数据存入数组
+    time_data.append(current_time)
+    pitch_data.append(pitch)
+    velocity_data.append(speed)
+    balance_torque_data.append(balance_torque)
+    turn_torque_data.append(turn_torque)
+    walk_torque_data.append(walk_torque)
+
+    with open('data.pkl', 'wb') as f:
+        pickle.dump([time_data, pitch_data, velocity_data, balance_torque_data, turn_torque_data, walk_torque_data], f)
+
+
 # create the Robot instance.
 robot = Robot()
+print(robot.devices)
 
 # get the time step of the current world.
 timestep = int(robot.getBasicTimeStep())
 start_time = robot.getTime()
 
+# create keyboard instance
+keyboard = robot.getKeyboard()
+keyboard.enable(timestep)
+
 # 初始化左右轮
-leftMotor = robot.getDevice('left wheel')
-leftMotorSensor = leftMotor.getPositionSensor()
+leftMotor = robot.getDevice('left_motor')
 leftMotor.setVelocity(0.0)
-leftMotorSensor.enable(timestep)
-rightMotor = robot.getDevice('right wheel')
+leftSensor = leftMotor.getPositionSensor()
+leftSensor.enable(timestep)
+rightMotor = robot.getDevice('right_motor')
 rightMotor.setVelocity(0.0)
-rightMotorSensor = rightMotor.getPositionSensor()
-rightMotorSensor.enable(timestep)
+rightSensor = rightMotor.getPositionSensor()
+rightSensor.enable(timestep)
 leftMotor.setPosition(float('inf'))
 rightMotor.setPosition(float('inf'))
+leftMotor.enableTorqueFeedback(True)
+rightMotor.enableTorqueFeedback(True)
 
 # 初始化IMU
 IMU = robot.getDevice("IMU")
@@ -31,136 +67,100 @@ IMU.enable(timestep)
 gyro = robot.getDevice("gyro")
 gyro.enable(timestep)
 
+# 初始化GPS
+gps = robot.getDevice("gps")
+gps.enable(timestep)
+
 # PID Controllers
-pid_angle = PIDController(2, 0, 0, 1e6, 8, start_time)
-pid_gyro = PIDController(0.06, 0, 0, 1e6, 8, start_time)
-pid_distance = PIDController(0.2, 0, 0, 1e6, 2, start_time)
-pid_speed = PIDController(0.3, 0, 0, 1e6, 8, start_time)
-# pid_yaw_angle = PIDController(1.0, 0, 0, 100000, 8, start_time)
-# pid_yaw_gyro = PIDController(0.04, 0, 0, 100000, 8, start_time)
-# pid_lqr_u = PIDController(1, 15, 0, 100000, 8, start_time)
-pid_zeropoint = PIDController(0.002, 0, 0, 1e6, 4, start_time)
-# pid_roll_angle = PIDController(8, 0, 0, 100000, 450, start_time)
+angle_loop = PIDController(30, 0, 0, 1e6, 10, start_time)
+gyro_loop = PIDController(5, 0, 0, 1e6, 10, start_time)
+loop_angle_yaw = PIDController(5, 0, 0, 1e6, 10, start_time)
+loop_gyro_yaw = PIDController(1, 0, 0, 1e6, 10, start_time)
+loop_speed = PIDController(1, 1e-3, 0, 1e6, 10, start_time)
 
-# Low pass filters
-lpf_joyy = LowPassFilter(0.2, start_time)
-lpf_zeropoint = LowPassFilter(0.1, start_time)
-lpf_roll = LowPassFilter(0.3, start_time)
-lpf_speed = LowPassFilter(0.1, start_time)
-lpf_gyro = LowPassFilter(0.1, start_time)
+# Low Pass Filter
+gps_speed_filter = LowPassFilter(0.1, start_time)
+pitch_filter = LowPassFilter(0.1, start_time)
+speed_target_filter = LowPassFilter(0.1, start_time)
 
-# LQR parameters
-angle_zeropoint = 0
-distance_zeropoint = -256.0
-LQR_u = 0
-
-#小车的物理参数
+# 小车的物理参数
 m_car = 3.97
 m_wheel = 0.507
 r_wheel = 0.085
-I_Wheel = 0.5*m_wheel*r_wheel**2
+I_Wheel = 0.5 * m_wheel * r_wheel ** 2
 
-# 用于存储变量的数组
-time_data = []
-LQR_distance_data = []
-LQR_speed_data = []
-LQR_angle_data = []
-LQR_gyro_data = []
-angle_control_data = []
-gyro_control_data = []
-distance_control_data = []
-speed_control_data = []
-LQR_u_data = []
-angle_zeropoint_data = []
+current_time = 0
+left_position = leftSensor.getValue()
+right_position = rightSensor.getValue()
 
 # Main loop:
-# - perform simulation steps until Webots is stopping the controller
 while robot.step(timestep) != -1:
     # Read the sensors:
-    # Enter here functions to read sensor data, like:
-    #  val = ds.getValue()
+    time_prev = current_time
     current_time = robot.getTime()
-
-    # 轮子的角度
-    left_shaft_angle = leftMotorSensor.getValue()
-    right_shaft_angle = rightMotorSensor.getValue()
-    # print(f"left_shaft_angle:{left_shaft_angle}, right_shaft_angle:{right_shaft_angle}")
-
-    # 轮子的角速度
-    left_shaft_speed = leftMotor.getVelocity()
-    right_shaft_speed = rightMotor.getVelocity()
-    # print(f"left_shaft_speed:{left_shaft_speed}, right_shaft_speed:{right_shaft_speed}")
+    print(f"current_time:{current_time}")
 
     # IMU角度
     rpy = IMU.getRollPitchYaw()
     roll = rpy[0]
     pitch = rpy[1]
     yaw = rpy[2]
-    # print(f"pitch:{pitch}")
+    print(f"pitch:{pitch}")
 
     # 陀螺仪角速度
     gyro_values = gyro.getValues()
-    roll_speed = gyro_values[0]
     pitch_speed = gyro_values[1]
     yaw_speed = gyro_values[2]
     # print(f"pitch_speed:{pitch_speed}")
 
+    # 通过PositionSensor获取速度
+    left_position_prev = left_position
+    right_position_prev = right_position
+    left_position = leftSensor.getValue()
+    right_position = rightSensor.getValue()
+    speed = (left_position - left_position_prev + right_position - right_position_prev) / 2 / (
+                current_time - time_prev)
+    print(f"speed:{speed}")
+
     # Process sensor data here.
-    # LQR_u = LQR_k1*(LQR_angle - angle_zeropoint) + LQR_k2*LQR_gyro
-    #         + LQR_k3*(LQR_distance - distance_zeropoint) + LQR_k4*LQR_speed;
-    LQR_distance = 0.5 * (left_shaft_angle + right_shaft_angle)
-    print(f"LQR_distance:{LQR_distance}")
-    LQR_speed = 0.5 * (left_shaft_speed + right_shaft_speed)
-    LQR_speed = lpf_speed(LQR_speed, current_time)
-    print(f"LQR_speed:{LQR_speed}")
-    LQR_angle = pitch
-    print(f"LQR_angle:{LQR_angle}")
-    LQR_gyro = pitch_speed
-    LQR_gyro = lpf_gyro(LQR_gyro, current_time)
-    print(f"LQR_gyro:{LQR_gyro}")
 
-    angle_control = pid_angle(LQR_angle - angle_zeropoint, current_time)
-    print(f"angle_control:{angle_control}")
-    gyro_control = pid_gyro(LQR_gyro, current_time)
-    print(f"gyro_control:{gyro_control}")
+    # 计算控制量
+    userkey = keyboard.getKey()
+    if userkey == 65:
 
-    if abs(LQR_speed) < 0.5:
-        distance_zeropoint = LQR_distance
+        speed_target = speed_target_filter(-5, current_time)
+    elif userkey == 68:
+        speed_target = speed_target_filter(5, current_time)
+    else:
+        speed_target = speed_target_filter(0, current_time)
+    print(f"speed_target:{speed_target}")
 
-    distance_control = pid_distance(LQR_distance - distance_zeropoint, current_time)
-    print(f"distance_control:{distance_control}")
-    speed_control = pid_speed(LQR_speed, current_time)
-    print(f"speed_control:{speed_control}")
+    angle_control = angle_loop(pitch, current_time)
+    gyro_control = gyro_loop(pitch_speed, current_time)
+    angle_yaw_control = loop_angle_yaw(yaw, current_time)
+    gyro_yaw_control = loop_gyro_yaw(yaw_speed, current_time)
+    speed_control = loop_speed(speed_target - speed, current_time)
 
-    LQR_u = - angle_control - gyro_control - distance_control - speed_control
-    # LQR_u = pid_lqr_u(LQR_u, current_time)
-    print(f"LQR_u:{LQR_u}")
-    angle_zeropoint -= pid_zeropoint(lpf_zeropoint(distance_control, current_time), current_time)
-    print(f"angle_zeropoint:{angle_zeropoint}")
+    balance_torque = -angle_control - gyro_control
+    # balance_torque = 0
+    turn_torque = angle_yaw_control + gyro_yaw_control
+    turn_torque = 0
+    walk_torque = speed_control
+    print(f"balance_torque:{balance_torque}, turn_torque:{turn_torque}, walk_torque:{walk_torque}")
+
+    torque_left = - balance_torque + turn_torque - walk_torque
+    torque_right = - balance_torque - turn_torque - walk_torque
 
     # 执行控制
-    YAW_output = 0
+    # 控制量为正，车往左
+    # 左上扬，pitch>0
+    # 车往右，gps_speed>0
+    leftMotor.setTorque(torque_left)
+    # leftMotor.setTorque(3)
+    rightMotor.setTorque(torque_right)
+    # rightMotor.setTorque(3)
+    print(f"set Torque:{torque_left}, {torque_right}")
 
-    # 正是往右
-    leftMotor.setVelocity(0.5 * (LQR_u + YAW_output) / I_Wheel)
-    rightMotor.setVelocity(0.5 * (LQR_u - YAW_output) / I_Wheel)
-    print(f"set speed:{0.5 * LQR_u / I_Wheel}")
-
-    # 将每次迭代的数据存入数组
-    time_data.append(current_time)
-    LQR_distance_data.append(LQR_distance)
-    LQR_speed_data.append(LQR_speed)
-    LQR_angle_data.append(LQR_angle)
-    LQR_gyro_data.append(LQR_gyro)
-    angle_control_data.append(angle_control)
-    gyro_control_data.append(gyro_control)
-    distance_control_data.append(distance_control)
-    speed_control_data.append(speed_control)
-    LQR_u_data.append(LQR_u)
-    angle_zeropoint_data.append(angle_zeropoint)
-
-    with open('data.pkl', 'wb') as f:
-        pickle.dump([time_data, LQR_distance_data, LQR_speed_data, LQR_angle_data, LQR_gyro_data, angle_control_data, gyro_control_data, distance_control_data, speed_control_data, LQR_u_data, angle_zeropoint_data], f)
-
+    collect_data()
 
     print("=====================================")

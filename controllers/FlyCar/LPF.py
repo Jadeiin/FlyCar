@@ -14,7 +14,7 @@ class LowPassFilter:
         Apply the low pass filter to the input signal x.
         """
         timestamp = cur_time  # Get current timestamp
-        dt = (timestamp - self.timestamp_prev) * 1e-6  # Time difference in seconds
+        dt = (timestamp - self.timestamp_prev)  # Time difference in seconds
 
         # Handle cases where dt is negative or too large
         if dt < 0.0:
