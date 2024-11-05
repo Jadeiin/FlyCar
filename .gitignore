@@ -170,4 +170,6 @@ worlds/
 # Files used to plot
 *.pkl
 
+# vscode settings
+.vscode/
 
